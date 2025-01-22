@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация в Book Shop</title>
+    <link rel="stylesheet" href="/css/stylesForRegister.css"> <!-- Подключение стилей -->
+    <!-- Подключение JavaScript файла -->
+    <script src="/js/registrationSuccess.js" defer></script>
+</head>
+<body>
+<h1>Регистрация в Book Shop</h1>
+<form th:action="@{/register}" method="post" onsubmit="return validatePasswords()">
+    <!-- Поле для имени пользователя -->
+    <label for="username">Имя пользователя:</label>
+    <input type="text" id="username" name="username" required>
+    <br><br>
+
+    <!-- Поле для пароля -->
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required>
+    <br><br>
+
+    <!-- Повторить пароль -->
+    <label for="password2">Повторите пароль:</label>
+    <input type="password" id="password2" name="password2" required>
+    <br><br>
+
+    <!-- Кнопка для регистрации -->
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+<!-- Сообщение об ошибке при попытке зарегистрировать уже существующего пользователя -->
+<div th:if="${param.error}">
+    <p style="color: red;">Пользователь с таким именем уже существует!</p>
+</div>
+
+<!-- Сообщение об успешной регистрации -->
+<div th:if="${param.success}">
+    <script type="text/javascript">
+        // Вызов функции для отображения всплывающего сообщения
+        document.addEventListener('DOMContentLoaded', function() {
+            showSuccessMessage();
+        });
+<!--        showSuccessMessage();-->
+    </script>
+</div>
+
+<p>Уже есть аккаунт? <a th:href="@{/login}">Войти</a></p>
+</body>
+</html>
+

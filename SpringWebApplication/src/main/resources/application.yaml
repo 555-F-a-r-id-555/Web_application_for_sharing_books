@@ -1,0 +1,85 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://junction.proxy.rlwy.net:15675/railway
+    username: postgres
+    password: KHlfXSfcXAOKURoJFlBvqSFNRIWexgCx
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  servlet:
+    multipart:
+      max-file-size: 10MB  # Максимальный размер одного файла
+      max-request-size: 20MB  # Максимальный общий размер запроса
+
+
+cloud:
+  aws:
+    s3:
+      bucket: book-storage-on-springbot
+      region: ru-central1
+      access-key: YCAJEDWU0GRMg2U4w2sqnzdlJ
+      secret-key: YCP0qzaNXsdazLsjekQ9q-EE-10GoskTZmN64cFO
+      endpoint: https://storage.yandexcloud.net
+
+
+  server:
+    port: 8080 # Порт для запуска приложения (можно изменить при необходимости)
+
+  logging:
+    level:
+      root: INFO
+      org.springframework: DEBUG
+      com.example: DEBUG # Замените на ваш пакет для детализированного логирования
+
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*" # Позволяет управлять метриками и другими админ-функциями
+
+  # Настройки для Spring Security (дополнительно, если нужно)
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+
+
+
+#cloud:
+#  aws:
+#    s3:
+#      bucket: book-storage-on-springbot
+#      region: ru-central1
+#      access-key: ${AWS_ACCESS_KEY}
+#      secret-key: ${AWS_SECRET_KEY}
+
+#spring:
+#  datasource:
+#    url: ${DATABASE_URL}
+#    username: ${DATABASE_USERNAME}
+#    password: ${DATABASE_PASSWORD}
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#
+#cloud:
+#  aws:
+#    s3:
+#      bucket: ${AWS_S3_BUCKET}
+#      region: ${AWS_REGION}
+#      access-key: ${AWS_ACCESS_KEY}
+#      secret-key: ${AWS_SECRET_KEY}
+
+
+
+
+

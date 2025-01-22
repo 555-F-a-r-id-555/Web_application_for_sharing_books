@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аккаунт</title>
+    <link rel="stylesheet" href="/css/stylesForAccount.css">
+</head>
+<body>
+<header>
+    <h1>Ваш аккаунт</h1>
+    <a href="/login">Выйти</a>
+</header>
+
+<section>
+    <h2>Информация о пользователе</h2>
+    <p><strong>Имя:</strong> <span th:text="${user.username}">Имя пользователя</span></p>
+</section>
+
+<section>
+    <h2>Загруженные книги</h2>
+    <div th:if="${#lists.isEmpty(books)}">
+        <p>Вы еще не загрузили ни одной книги.</p>
+    </div>
+    <table th:if="${!#lists.isEmpty(books)}">
+        <thead>
+        <tr>
+            <th>Название</th>
+            <th>Автор</th>
+            <th>Год</th>
+            <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.bookName}">Название книги</td>
+            <td th:text="${book.bookAuthor}">Автор книги</td>
+            <td th:text="${book.year}">Год</td>
+            <td>
+                <form th:action="@{/account/deleteBook}" method="post">
+                    <input type="hidden" name="bookId" th:value="${book.id}" />
+                    <button type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<h3><a href="/home">Перейти на главную страницу</a></h3>
+</body>
+</html>

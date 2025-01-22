@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/stylesForUpload.css">
+    <title>Загрузка книги</title>
+</head>
+<body>
+<h1>Загрузка книги</h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <label for="bookName">Название книги:</label>
+    <input type="text" id="bookName" name="bookName" required><br><br>
+
+    <label for="bookAuthor">Автор:</label>
+    <input type="text" id="bookAuthor" name="bookAuthor"><br><br>
+
+    <label for="pages">Количество страниц:</label>
+    <input type="number" id="pages" name="pages" required><br><br>
+
+    <label for="year">Год:</label>
+    <input type="text" id="year" name="year" maxlength="4"><br><br>
+
+    <label for="bookImage">Изображение:</label>
+    <input type="file" id="bookImage" name="bookImage" accept="image/*" required><br><br>
+
+    <label for="bookFile">Файл книги:</label>
+    <input type="file" id="bookFile" name="bookFile" accept=".pdf,.docx" required><br><br>
+
+    <button type="submit">Загрузить</button>
+</form>
+
+<p th:if="${message}" th:text="${message}"></p>
+
+<div th:if="${book}">
+    <h2>Сохранённая книга:</h2>
+    <p>Название: <span th:text="${book.bookName}"></span></p>
+    <p>Автор: <span th:text="${book.bookAuthor}"></span></p>
+    <p>Страниц: <span th:text="${book.pages}"></span></p>
+    <p>Год: <span th:text="${book.year}"></span></p>
+    <p>Изображение: <a th:href="${book.bookImage}" target="_blank">Смотреть</a></p>
+    <p>Файл книги: <a th:href="${book.bookUrl}" target="_blank">Скачать</a></p>
+</div>
+<h3><a href="/home">Перейти на главную страницу</a></h3>
+</body>
+</html>

@@ -1,0 +1,102 @@
+/* Основные стили для страницы */
+
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+    background-color: #f4f4f4;
+    background-image: url('/images/account.jpg'); /* Путь к вашему изображению */
+    background-size: cover; /* Изображение будет охватывать весь фон */
+    background-position: center; /* Центровка изображения */
+    background-attachment: fixed; /* Фиксированный фон при прокрутке */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #f4f4f4;
+}
+
+header a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+section {
+    background-color: #ffffff; /* Белый фон для блока */
+    border: 2px solid #dcdcdc; /* Светлая рамка */
+    border-radius: 10px; /* Скругленные углы рамки */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    padding: 20px; /* Внутренний отступ */
+    margin: 20px; /* Внешний отступ */
+    max-width: 800px; /* Максимальная ширина */
+    width: 90%; /* Адаптивная ширина */
+    color: #2c3e50; /* Цвет текста */
+}
+
+section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #2980b9;
+}
+
+section p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #dcdcdc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #ecf0f1;
+    font-weight: bold;
+}
+
+table td button {
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+table td button:hover {
+    background-color: #c0392b;
+}
+
+h3 a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+h3 a:hover {
+    text-decoration: underline;
+}

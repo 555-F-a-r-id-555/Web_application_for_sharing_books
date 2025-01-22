@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/stylesForHome.css">
+    <title>Book Shop</title>
+</head>
+<body>
+<header>
+    <div style="text-align: right; padding: 10px;">
+        <p th:if="${user != null}" class="welcome-message">Добро пожаловать, <span th:text="${user.username}">Username</span>!</p>
+        <form th:if="${user != null}" th:action="@{/account}" method="get">
+            <button type="submit">Account</button>
+        </form>
+        <form th:if="${user != null}" th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+    <div style="text-align: center;">
+        <form action="/" method="get" style="margin-top: 20px;"> <!--value="${searchTerm}" -->
+            <input type="text" name="searchTerm"  placeholder="Поиск по названию или автору книги"
+                   class="search-bar" />
+            <button type="submit" class="search-button">Поиск</button>
+        </form>
+    </div>
+</header>
+
+<main>
+    <!-- Кнопка "Вернуться на главную" -->
+    <div th:if="${searchTerm != null}">
+        <a href="/home" style="margin-bottom: 20px; display: inline-block; padding: 10px; background-color: #f0f0f0; text-decoration: none;">Вернуться на главную</a>
+    </div>
+    <!-- Эти элементы отображаются только на главной странице -->
+    <div th:if="${searchTerm == null}">
+        <h1>Добро пожаловать в Book Shop!</h1>
+        <h2>Все книги</h2>
+    </div>
+
+    <!-- Результат поиска -->
+    <div th:if="${searchTerm != null}">
+        <h2>Результаты поиска</h2>
+        <p th:if="${books.size() > 0}">
+            Найдено книг: <span th:text="${books.size()}"></span>
+        </p>
+        <p th:if="${books.size() == 0}">
+            По запросу <strong th:text="${searchTerm}"></strong> ничего не найдено.
+        </p>
+    </div>
+
+    <div th:each="book : ${books}">
+        <div>
+            <img th:src="${book.bookImage}" alt="Book Image" width="150" height="200"/>
+            <h3>Название: <span th:text="${book.bookName}"></span></h3>
+            <!-- Добавление светлого фона и темного текста для каждого абзаца -->
+            <div class="book-info">
+                <p>Автор: <span th:text="${book.bookAuthor}"></span></p>
+                <p>Страниц: <span th:text="${book.pages}"></span></p>
+                <p>Год: <span th:text="${book.year}"></span></p>
+                <p>Файл книги: <a th:href="${book.bookUrl}" target="_blank">Скачать</a></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div>
+        <a class="new-book" th:href="@{/upload}">Добавить новую книгу</a>
+    </div>
+</main>
+</body>
+</html>
+
+<!--    <div>-->
+<!--        <ul class="pagination">-->
+<!--            <li th:if="${currentPage > 0}">-->
+<!--                <a th:href="@{'/?page=' + (${currentPage} - 1) + '&size=' + (${size ?: 3}) + '&searchTerm=' + (${searchTerm ?: ''})}">Previous</a>-->
+<!--            </li>-->
+<!--            <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">-->
+<!--                <a th:href="@{'/?page=' + ${i} + '&size=' + (${size ?: 3}) + '&searchTerm=' + (${searchTerm ?: ''})}" th:text="${i + 1}"></a>-->
+<!--            </li>-->
+<!--            <li th:if="${currentPage < totalPages - 1}">-->
+<!--                <a th:href="@{'/?page=' + (${currentPage} + 1) + '&size=' + (${size ?: 3}) + '&searchTerm=' + (${searchTerm ?: ''})}">Next</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <ul class="pagination">-->
+<!--            <li th:if="${currentPage > 0}">-->
+<!--                <a th:href="@{'/?page=' + (${currentPage} - 1) + '&size=' + ${size} + '&searchTerm=' + ${searchTerm}}">Previous</a>-->
+<!--            </li>-->
+<!--            <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">-->
+<!--                <a th:href="@{'/?page=' + ${i} + '&size=' + ${size} + '&searchTerm=' + ${searchTerm}}" th:text="${i + 1}"></a>-->
+<!--            </li>-->
+<!--            <li th:if="${currentPage < totalPages - 1}">-->
+<!--&lt;!&ndash;                <a href="?page=${currentPage + 1}&size=${size}">Next</a>&ndash;&gt;-->
+<!--                <a th:href="@{'/?page=' + (${currentPage} + 1) + '&size=' + ${size} + '&searchTerm=' + ${searchTerm}}">Next</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+<!--    <div th:if="${totalPages > 1}" class="pagination">-->
+<!--        <ul>-->
+<!--            <li th:each="pageNum : ${#numbers.sequence(0, totalPages - 1)}"-->
+<!--                th:classappend="${pageNum == currentPage} ? 'active'">-->
+<!--                <a th:href="@{'/?page=' + ${pageNum} + '&size=3' + (${searchTerm != null} ? '&searchTerm=' + ${searchTerm} : '')}">-->
+<!--                    <span th:text="${pageNum + 1}"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
