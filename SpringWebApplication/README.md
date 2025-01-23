@@ -114,7 +114,7 @@
 
 
 #### База Данных:
-- Подключения в БД: postgresql://postgres:KHlfXSfcXAOKURoJFlBvqSFNRIWexgCx@junction.proxy.rlwy.net:15675/railway
+- Подключение к БД: postgresql://postgres:KHlfXSfcXAOKURoJFlBvqSFNRIWexgCx@junction.proxy.rlwy.net:15675/railway
 - ![Final_work](https://i.ibb.co/x13MBnm/05.png "JavaDB")
 - ![Final_work](https://i.ibb.co/2FgP1Fm/06.png "JavaDB")
 - ![Final_work](https://i.ibb.co/mBLzMB4/07.png "JavaDB")
