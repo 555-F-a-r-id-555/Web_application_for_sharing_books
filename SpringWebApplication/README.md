@@ -105,7 +105,21 @@
 
 
 
+#### Картинки, облака:
+- Ссылка на облако https://storage.yandexcloud.net/book-storage-on-springbot
+- ![Final_work](https://i.ibb.co/BZ6M5xr/01.png "JavaCloud")
+- ![Final_work](https://i.ibb.co/4s9GKV9/02.png "JavaCloud")
+- ![Final_work](https://i.ibb.co/hDnY0mb/03.png "JavaCloud")
+- ![Final_work](https://i.ibb.co/4NNFLj8/04.png "JavaCloud")
 
+
+#### База Данных:
+- Подключения в БД: postgresql://postgres:KHlfXSfcXAOKURoJFlBvqSFNRIWexgCx@junction.proxy.rlwy.net:15675/railway
+- ![Final_work](https://i.ibb.co/x13MBnm/05.png "JavaDB")
+- ![Final_work](https://i.ibb.co/2FgP1Fm/06.png "JavaDB")
+- ![Final_work](https://i.ibb.co/mBLzMB4/07.png "JavaDB")
+- ![Final_work](https://i.ibb.co/9GVmn8X/08.png "JavaDB")
+- ![Final_work](https://i.ibb.co/1Q1Y4s5/09.png "JavaDB")
 
 
 
